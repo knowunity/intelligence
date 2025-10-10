@@ -1,8 +1,9 @@
 import Flutter
-import AppIntents
 import CoreSpotlight
 import MobileCoreServices
 
+#if canImport(AppIntents)
+import AppIntents
 
 @available(iOS 18.0, *)
 public class IntelligenceSearchableItems {
@@ -33,3 +34,4 @@ public class IntelligenceSearchableItems {
   }
   
 }
+#endif

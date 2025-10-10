@@ -29,9 +29,11 @@ public class IntelligencePlugin: NSObject, FlutterPlugin {
           return item.forStorage()
         }
         IntelligencePlugin.storage.set(items: storageItems)
+        #if canImport(AppIntents)
         if #available(iOS 18.0, *) {
           IntelligencePlugin.spotlightCore.index(items: storageItems)
         }
+        #endif
         result(true)
       }
     } catch {
@@ -44,8 +46,10 @@ public class IntelligencePlugin: NSObject, FlutterPlugin {
   }
   
   public static let storage = IntelligenceStorage()
+  #if canImport(AppIntents)
   @available(iOS 18.0, *)
   public static let spotlightCore = IntelligenceSearchableItems()
+  #endif
 }
 
 struct PopulateArgument: Decodable {

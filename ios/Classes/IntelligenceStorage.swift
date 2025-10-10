@@ -8,9 +8,14 @@ public class IntelligenceStorage {
   }
   
   private func getDbPath() -> String {
-    var applicationDirectory = URL.documentsDirectory
-    applicationDirectory.append(component: "intelligence.sqlite3")
-    return applicationDirectory.absoluteString
+    let applicationDirectory: URL
+    if #available(iOS 16.0, *) {
+      applicationDirectory = URL.documentsDirectory
+    } else {
+      applicationDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    let dbURL = applicationDirectory.appendingPathComponent("intelligence.sqlite3")
+    return dbURL.path
   }
   
   private func getDb() throws -> Connection {
