@@ -1,3 +1,9 @@
+## 0.3.0
+
+* feat: support Swift Package Manager
+* chore: bump SQLite.swift to 0.16.0
+* chore: require Flutter 3.44+
+
 ## 0.2.0
 
 * chore: migrate to Flutter 3.27+
